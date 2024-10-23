@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/css/style.css" />
+        <title>Recipe Form</title>
+    </head>
+    <body>
+        <header><h1>Add Recipe - Form</h1></header>
+
+        <main>
+            <form action="/api/add-recipe" method="POST">
+                <label for="title">Title:</label>
+                <br />
+                <input type="text" name="title" id="title" required />
+                <br />
+                <label for="ingredients">Ingredients:</label>
+                <br />
+                <input
+                    type="text"
+                    name="ingredients"
+                    id="ingredients"
+                    required
+                />
+                <br />
+                <label for="description">Description:</label>
+                <br />
+                <textarea
+                    name="description"
+                    id="description"
+                    rows="4"
+                    cols="50"
+                    required
+                ></textarea>
+                <br />
+                <label for="img">Img URL:</label>
+                <br />
+                <input type="text" name="img" id="img" required />
+                <br />
+                <br />
+                <button type="submit">Add Recipe</button>
+            </form>
+        </main>
+    </body>
+</html>

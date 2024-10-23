@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/css/style.css" />
+        <title>Recipe</title>
+    </head>
+    <body>
+        <header><h1>Recipe: <%= recipe.title %></h1></header>
+
+        <main>
+            <div class="recipes-container">
+                <ul>
+                    <li>
+                        <div class="recipe-container">
+                            <h2>Title: <%= recipe.title %></h2>
+                            <p>Ingredients: <%= recipe.ingredients %></p>
+                            <p>Description: <%= recipe.description %></p>
+                            <img
+                                src="<%= recipe.img %>"
+                                alt="<%= recipe.title %>"
+                            />
+                            <br />
+                            <a href="/api/recipes">Back to All</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </main>
+    </body>
+</html>

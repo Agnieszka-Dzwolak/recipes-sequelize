@@ -6,14 +6,14 @@ import { DataTypes, Sequelize } from 'sequelize';
 
 // import models
 import createUser from './user.js';
-import createBook from './book.js';
+import createRecipe from './recipe.js';
 
 // construct path
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const PATH = dirname(__filename);
 
 // path configuration
-dotenv.config({ path: path.resolve(__dirname, '..', '.env') });
+dotenv.config({ path: path.join(PATH, '..', '.env') });
 
 const sequelize = new Sequelize(
     process.env.DB_NAME,
@@ -22,9 +22,9 @@ const sequelize = new Sequelize(
     {
         host: process.env.DB_HOST,
         dialect: 'mysql',
-        dialectOptions: {
-            socketPath: '/tmp/mysql.sock'
-        },
+        // dialectOptions: {
+        //     socketPath: '/tmp/mysql.sock'
+        // },
         pool: {
             max: 5,
             min: 0,
@@ -49,11 +49,11 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.users = createUser(sequelize, DataTypes);
-db.books = createBook(sequelize, DataTypes);
+db.recipes = createRecipe(sequelize, DataTypes);
 
 // one-to-many relationship
-db.users.hasMany(db.books, { as: 'books', foreignKey: 'user_id' });
-db.books.belongsTo(db.users, { as: 'user', foreignKey: 'user_id' });
+db.users.hasMany(db.recipes, { as: 'recipes', foreignKey: 'user_id' });
+db.recipes.belongsTo(db.users, { as: 'user', foreignKey: 'user_id' });
 
 db.sequelize.sync({ force: false }).then(() => {
     console.log('yes re-sync done!');
